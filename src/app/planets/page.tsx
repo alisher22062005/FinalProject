@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import Search from "../../components/Menu/Search/Search";
 import SmoothWrapper from "@/components/Menu/SmoothScroll/SmoothScroll";
-import { planetsRef } from "../../ref";
+
 export default function Planets() {
   const image = "assets/search_planets.jpg";
   const [loading, setLoading] = useState(true);

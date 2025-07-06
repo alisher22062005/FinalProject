@@ -40,10 +40,6 @@ export default function Header() {
     router.push("/");
   }
 
-  const handleClick = () => {
-    planetsRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <div className="fixed top-1  sm:ml-[10%] w-[100%]  flex  h-[13vh] sm:gap-[10%] xs:gap-[0%]  text-[1.2rem] xs:ml-[0px]  ">
       <div className="w-[20%] flex items-center  xs:hidden sm:block">
