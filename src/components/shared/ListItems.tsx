@@ -30,7 +30,6 @@ export default function ListItems({
 
   useEffect(() => {
     setCurrentArray(data.filter((item, index) => index < 6));
-    console.log("CurrentArry: ", currentArray);
   }, [data]);
 
   const handleClick = (value: number) => {

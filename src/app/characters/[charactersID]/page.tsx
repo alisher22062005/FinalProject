@@ -2,7 +2,7 @@
 import ItemDescribe from "@/components/shared/ItemDescribe";
 // import { fetchPlanets, PlanetType } from "@/toolkit/slices/Planet";
 import { AppDispatch, RootState } from "@/toolkit/store";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { notFound } from "next/navigation";

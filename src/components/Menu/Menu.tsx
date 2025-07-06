@@ -4,12 +4,9 @@ import "../../styles/Menu.css";
 import Header from "./Header/Header";
 import Seacrh from "./Search/Search";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "@/toolkit/store";
 import { useState } from "react";
-export default function Menu() {
-  const dispatch = useDispatch<AppDispatch>();
 
+export default function Menu() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

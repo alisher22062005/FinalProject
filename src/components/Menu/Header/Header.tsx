@@ -1,10 +1,9 @@
 "use client";
 import "../../../styles/Menu.css";
-import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
+
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { createRef } from "react";
-import { ref } from "../../../ref";
+
 import { planetsRef } from "../../../ref";
 
 export default function Header() {
@@ -30,14 +29,10 @@ export default function Header() {
   function handleClickFillms() {
     setCurrentButton("Films");
     router.push("/films");
-
-    // setCurrentButton("Films");
   }
   function handleClickPlanets() {
     setCurrentButton("Planets");
     router.push("/planets");
-
-    // setCurrentButton("Planets");
   }
 
   function handleClickCharacters() {
@@ -101,13 +96,6 @@ export default function Header() {
           </button>
         </div>
       </div>
-
-      {/* <div
-        // onClick={handleClick}
-        className="text-white flex items-center w-[20%] "
-      >
-        <SearchRoundedIcon fontSize="large" />
-      </div> */}
     </div>
   );
 }

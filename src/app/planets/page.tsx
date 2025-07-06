@@ -22,9 +22,6 @@ export default function Planets() {
     );
   }
 
-  const handleClick = () => {
-    planetsRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
   return (
     <>
       <SmoothWrapper>

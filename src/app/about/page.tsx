@@ -1,6 +1,6 @@
 "use client";
 import Header from "@/components/Menu/Header/Header";
-import img1 from "../../../public/assets/star_wars_about.webp";
+
 import SmoothWrapper from "@/components/Menu/SmoothScroll/SmoothScroll";
 import { useState } from "react";
 import { useEffect } from "react";

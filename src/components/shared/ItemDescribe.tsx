@@ -1,7 +1,6 @@
 "use client";
 
 import { PlanetType } from "@/toolkit/slices/Planet";
-import { useEffect } from "react";
 import { CharacterType } from "@/toolkit/slices/Character";
 import { useRouter } from "next/navigation";
 

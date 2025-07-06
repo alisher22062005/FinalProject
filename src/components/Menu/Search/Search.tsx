@@ -22,8 +22,12 @@ export default function Seacrh({ image }: { image?: string }) {
   let match: (CharacterType | PlanetType)[] = [];
 
   useEffect(() => {
-    image ? dispatch(fetchPlanets()) : dispatch(fetchCharacters());
-  }, []);
+    if (image) {
+      dispatch(fetchPlanets());
+    } else {
+      dispatch(fetchCharacters());
+    }
+  }, [dispatch, image]);
 
   image ? (source = image) : (source = "assets/search.jpg");
 
