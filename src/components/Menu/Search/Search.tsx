@@ -6,61 +6,97 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/toolkit/store";
 import { RootState } from "@/toolkit/store";
 import { CharacterType, fetchCharacters } from "@/toolkit/slices/Character";
+import { fetchPlanets, PlanetType } from "@/toolkit/slices/Planet";
+import { planetsRef } from "@/ref";
+// import ListCharacters from "@/components/shared/ListItems";
+import ListItems from "@/components/shared/ListItems";
 
-import ListCharacters from "@/components/Objects/Character/ListCharacters";
-
-export default function Seacrh() {
+export default function Seacrh({ image }: { image?: string }) {
   const [input, setInput] = useState("");
-  const [findCharacter, setFindCharacter] = useState(false);
-  const [currentSearch, setCurrentSearch] = useState<CharacterType[]>([]);
-
+  const [findItem, setFindItem] = useState(false);
+  const [currentSearch, setCurrentSearch] = useState<
+    (CharacterType | PlanetType)[]
+  >([]);
+  const [notValidInput, setNotValidInput] = useState("...Search");
+  const [notFound, setNotFound] = useState(true);
+  let source;
   const dispatch = useDispatch<AppDispatch>();
-  let match: CharacterType[] = [];
+  let match: (CharacterType | PlanetType)[] = [];
+  let data;
 
   useEffect(() => {
-    dispatch(fetchCharacters());
+    image ? dispatch(fetchPlanets()) : dispatch(fetchCharacters());
   }, []);
 
-  const data = useSelector((state: RootState) => state.characters.characters);
+  image ? (source = image) : (source = "assets/search.jpg");
+
+  if (!image)
+    data = useSelector((state: RootState) => state.characters.characters);
+  else data = useSelector((state: RootState) => state.planets.planets);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
+      if (input.trim().length == 0) {
+        setNotValidInput("...Type some text");
+        setNotFound(true);
+        return;
+      }
+      console.log("D", data);
+      console.log(input);
       match = data.filter(
-        (character) =>
-          character.name.toLowerCase() == input.trim().toLowerCase()
+        (item) => item.name.toLowerCase() == input.trim().toLowerCase()
       );
-      console.log("Match: ", match);
+      // console.log("Match: ", match);
+
       if (match.length > 0) {
         setCurrentSearch(match);
-        setFindCharacter(true);
-        console.log(match);
-      } else setFindCharacter(false);
+        setFindItem(true);
+        setNotFound(true);
+        console.log("NotFoubd", notFound);
+      } else {
+        setFindItem(false);
+        setNotFound(false);
+        console.log("NotFound: ", notFound);
+      }
 
       setInput("");
+      setNotValidInput("...Search");
     }
   };
 
   return (
     <>
       <div
-        style={{ backgroundImage: `url("assets/search.jpg") ` }}
-        className="h-screen flex items-center justify-center overflow:hidden bg-center bg-cover  mt-[10%]  bg-whites "
+        style={{
+          backgroundImage: `linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0.5), rgba(0,0,0,0.9)),url("${source}") `,
+        }}
+        className="h-screen flex  items-center justify-center overflow:hidden bg-center bg-cover sm: mt-[10%] xs:mt-[5%]  bg-white "
       >
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
           type="text"
-          placeholder="Search..."
-          className="w-[30%] p-[1%] border placeholder-white text-white z-[2] bg-black mt-[35%]"
+          placeholder={notValidInput}
+          className={`sm:w-[30%] xs:w-[55%] p-[1%] border text-white  z-[2] ${
+            notValidInput == "...Search"
+              ? "placeholder-white"
+              : "placeholder-[#ba000d]"
+          } bg-black mt-[35%]`}
         />
+        {!notFound && (
+          <div className="text-[#ba000d] sm:text-[1.2rem] flex justify-end sm:w-[30%] xs:w-[50%] fixed sm:mt-[42%] xs:mt-[53%] xs:text-[1rem] font-bold">
+            Not Found
+          </div>
+        )}
       </div>
 
-      <ListCharacters
-        findCharacter={findCharacter}
-        setFindCharacter={setFindCharacter}
+      <ListItems
+        findItem={findItem}
+        setFindItem={setFindItem}
         match={currentSearch}
-      ></ListCharacters>
+        image={image}
+      ></ListItems>
     </>
   );
 }

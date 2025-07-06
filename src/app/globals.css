@@ -1,4 +1,9 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap");
+@theme {
+  --breakpoint-xs: 320px;
+  --breakpoint-sm: 620px;
+}
 
 @layer utilities {
   @keyframes float {
@@ -12,10 +17,14 @@
   }
 
   .animate-my-float {
-    animation: float 3s ease-in-out infinite;
+    animation: float 4s ease-in-out infinite;
   }
 }
 
 body {
   background-color: black;
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

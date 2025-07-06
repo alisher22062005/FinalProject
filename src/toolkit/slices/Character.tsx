@@ -20,18 +20,24 @@ export interface CharacterType {
   mass: string;
   gender: string;
   image: string;
+  title: "";
+  id: number;
+  born: number;
+  died: number;
 }
 
 interface CharacterState {
   characters: CharacterType[];
-  loading: boolean;
+  status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
+  id: 1;
 }
 
 const initialState: CharacterState = {
   characters: [], // ← тут будет API-результат
-  loading: false,
+  status: "idle",
   error: null,
+  id: 1,
 };
 
 const charactersSlice = createSlice({
@@ -41,15 +47,15 @@ const charactersSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchCharacters.pending, (state) => {
-        state.loading = true;
+        state.status = "loading";
         state.error = null;
       })
       .addCase(fetchCharacters.fulfilled, (state, action) => {
-        state.loading = false;
+        state.status = "succeeded";
         state.characters = action.payload; // ← тут мы кладём данные в state
       })
       .addCase(fetchCharacters.rejected, (state, action) => {
-        state.loading = false;
+        state.status = "failed";
         state.error = action.error.message || "Ошибка при загрузке";
       });
   },
