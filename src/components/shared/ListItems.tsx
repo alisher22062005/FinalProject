@@ -5,7 +5,7 @@ import Item from "./Item";
 import { CharacterType } from "@/toolkit/slices/Character";
 import { useEffect, useState } from "react";
 import { Button } from "@mui/material";
-
+import Image from "next/image";
 import { PlanetType } from "@/toolkit/slices/Planet";
 
 export default function ListItems({
@@ -115,6 +115,18 @@ export default function ListItems({
               }`}
               src={match[0].image || "assets/no_image.webp"}
             ></img>
+            {/* <div className=" relative h-[400px] w-full">
+              {" "}
+              <Image
+                alt="Image"
+                className={` rounded-[1rem] ${
+                  image
+                    ? "sm:w-[300px] xs:w-[250px]"
+                    : "sm:max-w-[100%] xs:w-[80%]"
+                }`}
+                src={match[0].image || "assets/no_image.webp"}
+              />
+            </div> */}
           </div>
           <div className="sm:mt-[24%] xs:mt-[10%] ">
             <Button onClick={() => setFindItem(false)} variant="contained">

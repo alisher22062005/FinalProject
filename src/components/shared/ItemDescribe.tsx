@@ -3,7 +3,7 @@
 import { PlanetType } from "@/toolkit/slices/Planet";
 import { CharacterType } from "@/toolkit/slices/Character";
 import { useRouter } from "next/navigation";
-
+import Image from "next/image";
 export default function ItemDescribe({
   fetchedData,
   slug,
@@ -38,12 +38,16 @@ export default function ItemDescribe({
         className=" h-screen flex justify-center flex-col text-white w-full gap-[2rem] font-[Space_Grotesk] sm:p-[25%] xs:p-[10%] "
       >
         <div className="w-[100%] flex justify-center  ">
-          <img
-            // src="/assets/default.jpg"
-            src={id != 1 ? "/assets/default.jpg" : selectedItem?.image}
-            alt="Image"
-            className="h-[330px] sm:w-[40%] xs:w-[100%] bg-center bg-cover rounded-[1rem] "
-          ></img>
+          <div className="relative h-[330px] sm:w-[40%] xs:w-[100%]">
+            <Image
+              src={
+                selectedItem?.image ? selectedItem.image : "/assets/default.jpg"
+              }
+              alt="Image"
+              className="object-cover rounded-[1rem]"
+              fill
+            />
+          </div>
         </div>
         <div>
           <div className="flex flex-col w-[90%] justify-start sm:ml-[10%] xs:ml-[3%] gap-[2rem]  ">

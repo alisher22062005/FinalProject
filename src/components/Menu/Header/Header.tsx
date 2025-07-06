@@ -3,7 +3,7 @@ import "../../../styles/Menu.css";
 
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-
+import Image from "next/image";
 export default function Header() {
   const router = useRouter();
 
@@ -42,10 +42,15 @@ export default function Header() {
     <div className="fixed  top-0 left-0  sm:ml-[10%] w-[100%]  flex  h-[13vh] sm:gap-[10%] xs:gap-[0%]  text-[1.2rem] xs:ml-[0px]  ">
       <div className="w-[20%] flex items-center  xs:hidden sm:block">
         {" "}
-        <img
-          className="xs:object-cover xs:object-center h-[100%] img-color"
-          src="/assets/star_wars.png"
-        ></img>
+        <div className=" relative h-[100px] w-[150px] ">
+          {" "}
+          <Image
+            className="xs:object-cover xs:object-center  img-color"
+            src="/assets/star_wars.png"
+            alt="Image"
+            fill
+          />
+        </div>
       </div>
 
       <div className="flex  text-white sm:w-[30%] sm:gap-[8%] xs:gap-[6%] items-center xs:w-full xs:justify-center  ">
