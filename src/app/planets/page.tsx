@@ -1,17 +1,11 @@
 "use client";
 import Header from "@/components/Menu/Header/Header";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "@/toolkit/store";
 import { useEffect } from "react";
-import { fetchPlanets } from "@/toolkit/slices/Planet";
-import { useSelector } from "react-redux";
-import { RootState } from "@/toolkit/store";
 import { useState } from "react";
 import Search from "../../components/Menu/Search/Search";
 import SmoothWrapper from "@/components/Menu/SmoothScroll/SmoothScroll";
 import { planetsRef } from "../../ref";
 export default function Planets() {
-  const data = useSelector((state: RootState) => state.planets.planets);
   const image = "assets/search_planets.jpg";
   const [loading, setLoading] = useState(true);
 

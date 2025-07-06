@@ -10,10 +10,7 @@ export default function Item({
 {
   item: CharacterType | FilmType | PlanetType;
   data: CharacterType[] | PlanetType[] | FilmType[];
-  // key: number;
 }) {
-  // console.log("ItemItem: ", item);
-  // console.log("DATA: ", data);
   const router = useRouter();
 
   function navigateTo() {
@@ -21,7 +18,7 @@ export default function Item({
     else {
       if ("climate" in item) {
         let index = 0;
-        const i = data.filter((i, ind) => {
+        data.filter((i, ind) => {
           if (i == item) index = ind;
         });
         router.push(`/planets/${index + 1}`);

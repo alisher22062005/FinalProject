@@ -7,8 +7,6 @@ import { AppDispatch } from "@/toolkit/store";
 import { RootState } from "@/toolkit/store";
 import { CharacterType, fetchCharacters } from "@/toolkit/slices/Character";
 import { fetchPlanets, PlanetType } from "@/toolkit/slices/Planet";
-import { planetsRef } from "@/ref";
-// import ListCharacters from "@/components/shared/ListItems";
 import ListItems from "@/components/shared/ListItems";
 
 export default function Seacrh({ image }: { image?: string }) {
@@ -22,7 +20,6 @@ export default function Seacrh({ image }: { image?: string }) {
   let source;
   const dispatch = useDispatch<AppDispatch>();
   let match: (CharacterType | PlanetType)[] = [];
-  let data;
 
   useEffect(() => {
     image ? dispatch(fetchPlanets()) : dispatch(fetchCharacters());
@@ -30,9 +27,11 @@ export default function Seacrh({ image }: { image?: string }) {
 
   image ? (source = image) : (source = "assets/search.jpg");
 
-  if (!image)
-    data = useSelector((state: RootState) => state.characters.characters);
-  else data = useSelector((state: RootState) => state.planets.planets);
+  const characters = useSelector(
+    (state: RootState) => state.characters.characters
+  );
+  const planets = useSelector((state: RootState) => state.planets.planets);
+  const data = image ? planets : characters;
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
@@ -41,12 +40,10 @@ export default function Seacrh({ image }: { image?: string }) {
         setNotFound(true);
         return;
       }
-      console.log("D", data);
-      console.log(input);
+
       match = data.filter(
         (item) => item.name.toLowerCase() == input.trim().toLowerCase()
       );
-      // console.log("Match: ", match);
 
       if (match.length > 0) {
         setCurrentSearch(match);

@@ -5,8 +5,9 @@ import Item from "./Item";
 import { CharacterType } from "@/toolkit/slices/Character";
 import { useEffect, useState } from "react";
 import { Button } from "@mui/material";
-import { planetsRef } from "@/ref";
+
 import { PlanetType } from "@/toolkit/slices/Planet";
+
 export default function ListItems({
   findItem,
   match,
@@ -20,9 +21,12 @@ export default function ListItems({
 }) {
   const [currentArray, setCurrentArray] =
     useState<(CharacterType | PlanetType)[]>();
-  let data;
-  if (image) data = useSelector((state: RootState) => state.planets.planets);
-  else data = useSelector((state: RootState) => state.characters.characters);
+
+  const characters = useSelector(
+    (state: RootState) => state.characters.characters
+  );
+  const planets = useSelector((state: RootState) => state.planets.planets);
+  const data = image ? planets : characters;
 
   useEffect(() => {
     setCurrentArray(data.filter((item, index) => index < 6));
