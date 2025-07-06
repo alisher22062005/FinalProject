@@ -5,7 +5,7 @@ import Item from "./Item";
 import { CharacterType } from "@/toolkit/slices/Character";
 import { useEffect, useState } from "react";
 import { Button } from "@mui/material";
-import Image from "next/image";
+
 import { PlanetType } from "@/toolkit/slices/Planet";
 
 export default function ListItems({

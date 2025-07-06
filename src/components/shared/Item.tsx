@@ -2,7 +2,7 @@ import { CharacterType } from "@/toolkit/slices/Character";
 import { useRouter } from "next/navigation";
 import { FilmType } from "@/toolkit/slices/Film";
 import { PlanetType } from "@/toolkit/slices/Planet";
-import Image from "next/image";
+
 export default function Item({
   item,
   data,
