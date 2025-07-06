@@ -4,8 +4,6 @@ import "../../../styles/Menu.css";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { planetsRef } from "../../../ref";
-
 export default function Header() {
   const router = useRouter();
 

@@ -17,7 +17,6 @@ export default function Seacrh({ image }: { image?: string }) {
   >([]);
   const [notValidInput, setNotValidInput] = useState("...Search");
   const [notFound, setNotFound] = useState(true);
-  let source;
   const dispatch = useDispatch<AppDispatch>();
   let match: (CharacterType | PlanetType)[] = [];
 
@@ -29,7 +28,7 @@ export default function Seacrh({ image }: { image?: string }) {
     }
   }, [dispatch, image]);
 
-  image ? (source = image) : (source = "assets/search.jpg");
+  const source = image ?? "assets/search.jpg";
 
   const characters = useSelector(
     (state: RootState) => state.characters.characters
