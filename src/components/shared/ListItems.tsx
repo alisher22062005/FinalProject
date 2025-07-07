@@ -107,14 +107,6 @@ export default function ListItems({
       {findItem && (
         <div className="flex  xs:justify-center xs:items-center gap-[3%] sm:flex-row xs:flex-col">
           <div className="flex xs:justify-center sm:w-[20%] xs:w-[60%]">
-            {/* <img
-              className={`h-[400px]  rounded-[1rem] ${
-                image
-                  ? "sm:w-[300px] xs:w-[250px]"
-                  : "sm:max-w-[100%] xs:w-[80%]"
-              }`}
-              src={match[0].image || "assets/no_image.webp"}
-            ></img> */}
             <div className=" relative h-[400px] w-full">
               {" "}
               <Image
@@ -124,7 +116,7 @@ export default function ListItems({
                     ? "sm:w-[300px] xs:w-[250px]"
                     : "sm:max-w-[100%] xs:w-[80%]"
                 }`}
-                src={match[0].image || "assets/no_image.webp"}
+                src={match[0].image || "/assets/no_image.webp"}
                 fill
               />
             </div>
