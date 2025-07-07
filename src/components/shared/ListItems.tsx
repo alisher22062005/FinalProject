@@ -5,7 +5,7 @@ import Item from "./Item";
 import { CharacterType } from "@/toolkit/slices/Character";
 import { useEffect, useState } from "react";
 import { Button } from "@mui/material";
-
+import Image from "next/image";
 import { PlanetType } from "@/toolkit/slices/Planet";
 
 export default function ListItems({
@@ -106,27 +106,28 @@ export default function ListItems({
 
       {findItem && (
         <div className="flex  xs:justify-center xs:items-center gap-[3%] sm:flex-row xs:flex-col">
-          <div className="flex xs:justify-center">
-            <img
+          <div className="flex xs:justify-center sm:w-[20%] xs:w-[60%]">
+            {/* <img
               className={`h-[400px]  rounded-[1rem] ${
                 image
                   ? "sm:w-[300px] xs:w-[250px]"
                   : "sm:max-w-[100%] xs:w-[80%]"
               }`}
               src={match[0].image || "assets/no_image.webp"}
-            ></img>
-            {/* <div className=" relative h-[400px] w-full">
+            ></img> */}
+            <div className=" relative h-[400px] w-full">
               {" "}
               <Image
                 alt="Image"
-                className={` rounded-[1rem] ${
+                className={` rounded-[1rem]  object-center object-cover ${
                   image
                     ? "sm:w-[300px] xs:w-[250px]"
                     : "sm:max-w-[100%] xs:w-[80%]"
                 }`}
                 src={match[0].image || "assets/no_image.webp"}
+                fill
               />
-            </div> */}
+            </div>
           </div>
           <div className="sm:mt-[24%] xs:mt-[10%] ">
             <Button onClick={() => setFindItem(false)} variant="contained">

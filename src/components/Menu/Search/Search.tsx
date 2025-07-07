@@ -78,7 +78,7 @@ export default function Seacrh({ image }: { image?: string }) {
           onKeyDown={handleKeyDown}
           type="text"
           placeholder={notValidInput}
-          className={`sm:w-[30%] xs:w-[55%] p-[1%] border text-white  z-[2] ${
+          className={`sm:w-[30%] xs:w-[55%] sm:p-[1%] border text-white xs:p-[2%]  z-[2] ${
             notValidInput == "...Search"
               ? "placeholder-white"
               : "placeholder-[#ba000d]"

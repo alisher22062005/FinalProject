@@ -3,6 +3,8 @@
 import { PlanetType } from "@/toolkit/slices/Planet";
 import { CharacterType } from "@/toolkit/slices/Character";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 export default function ItemDescribe({
   fetchedData,
@@ -30,12 +32,25 @@ export default function ItemDescribe({
   }
 
   const selectedItem = item[0];
-  console.log("SelectedItem: ", selectedItem);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 100); // simulate delay
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-screen text-white">
+        Loading...
+      </div>
+    );
+  }
   return (
     <>
       <div
         onClick={() => router.back()}
-        className=" h-screen flex justify-center flex-col text-white w-full gap-[2rem] font-[Space_Grotesk] sm:p-[25%] xs:p-[10%] "
+        className=" h-screen flex justify-center flex-col text-white w-full gap-[2rem] font-[Space_Grotesk] sm:p-[20%] xs:p-[10%] "
       >
         <div className="w-[100%] flex justify-center  ">
           <div className="relative h-[330px] sm:w-[40%] xs:w-[100%]">
@@ -44,7 +59,7 @@ export default function ItemDescribe({
                 selectedItem?.image ? selectedItem.image : "/assets/default.jpg"
               }
               alt="Image"
-              className="object-cover rounded-[1rem]"
+              className="object-cover rounded-[1rem] object-top"
               fill
             />
           </div>
@@ -54,7 +69,7 @@ export default function ItemDescribe({
             <div className="flex text-[2rem] font-bold  ">Description</div>
             {/* planets */}
             {id == 3 && item.length > 0 && isPlanet(selectedItem) && (
-              <div className="flex flex-col font-medium text-[1.3rem] pb-[5%] ">
+              <div className="flex flex-col font-medium text-[1.3rem]  ">
                 <div className="p-[2%] flex flex-row sm:gap-[20%] xs:gap-[50%] border-t-white border-b-white border-[3px] border-[#1C2126] sm:w-[80%] xs:w-[100%]">
                   <div className="w-[5%]  text-[#A1ABB5] ">Name</div>
                   <div>{selectedItem.name}</div>
@@ -71,7 +86,10 @@ export default function ItemDescribe({
             )}
             {/* characters */}
             {id == 1 && item.length > 0 && isCharacter(selectedItem) && (
-              <div className="flex flex-col font-medium text-[1.3rem] pb-[5%]">
+              <div
+                className="flex flex-col font-medium text-[1.3rem] 
+              "
+              >
                 <div className="p-[2%] flex flex-row gap-[20%] border-t-white border-b-white border-[3px] border-[#1C2126] sm:w-[80%] xs:w-[100%]">
                   <div className="w-[5%]  text-[#A1ABB5] ">Name</div>
                   <div>{selectedItem.name}</div>

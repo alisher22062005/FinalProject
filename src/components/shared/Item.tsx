@@ -2,7 +2,7 @@ import { CharacterType } from "@/toolkit/slices/Character";
 import { useRouter } from "next/navigation";
 import { FilmType } from "@/toolkit/slices/Film";
 import { PlanetType } from "@/toolkit/slices/Planet";
-
+import Image from "next/image";
 export default function Item({
   item,
   data,
@@ -31,21 +31,16 @@ export default function Item({
     <>
       <div className="card bg-base-100 sm:w-[20%] shadow-sm xs:w-[40%] ">
         <figure>
-          {/* <div className="relative w-[60%] sm:h-[200px] xs:h-[100px]">
+          <div className="relative sm:h-[200px] xs:h-[100px] max-w-[60%]   xs:flex">
+            {" "}
             <Image
               onClick={navigateTo}
+              className="object-cover rounded-[1rem] object-top "
+              fill
               src={item.image?.trim() ? item.image : "/assets/no_image.webp"}
               alt={item.name || item.title}
-              fill
-              className="object-cover rounded-[1rem]"
             />
-          </div> */}
-          <img
-            onClick={navigateTo}
-            className="sm:h-[200px] xs:h-[100px] max-w-[60%] object-cover  rounded-[1rem] xs:flex"
-            src={item.image?.trim() ? item.image : "/assets/no_image.webp"}
-            alt={item.name || item.title}
-          />
+          </div>
         </figure>
         <div className="card-body pb-[15%]">
           <div className="text-white pt-[3%] w-[90%] font-[Space_Grotesk] font-medium truncate">
