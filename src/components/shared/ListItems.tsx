@@ -46,6 +46,8 @@ export default function ListItems({
       setCurrentArray(data.filter((item, index) => index < 6));
   }, [data]);
 
+  console.log("CUrrent array: ", currentArray);
+
   const handleClick = (value: number) => {
     console.log(value);
     switch (value) {
