@@ -29,7 +29,7 @@ export default function About() {
             className="object-cover object-center"
             fill
           />
-          <div className="absolute inset-0 bg-gradient-to-t  from-black/100 to-black/75"></div>
+          <div className="absolute inset-0 bg-gradient-to-t  sm:from-black/100 sm:to-black/75 xs:from-black/100 xs:to-black/60"></div>
           <Header></Header>
           <div className="text-white sm:text-[3rem] xs:text-[2rem] font-bold z-10">
             What is Star Wars?

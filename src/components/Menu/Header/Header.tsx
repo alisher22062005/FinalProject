@@ -1,5 +1,4 @@
 "use client";
-import "../../../styles/Menu.css";
 
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -15,10 +14,12 @@ export default function Header() {
 
   useEffect(() => {
     const b = localStorage.getItem("currentButton");
-    if (b) setCurrentButton(b);
-    else {
+    if (b) {
+      setCurrentButton(b);
+      b == "Characters" ? router.push("/") : router.push(`/${b.toLowerCase()}`);
+    } else {
       setCurrentButton("Characters");
-      router.push("/characters");
+      router.push("/");
     }
   }, []);
 
@@ -48,7 +49,7 @@ export default function Header() {
         <div className=" relative h-[100px] w-[150px] ">
           {" "}
           <Image
-            className="relative xs:object-cover xs:object-center overflow:hidden  img-color "
+            className="relative xs:object-cover xs:object-center overflow:hidden   "
             src="/assets/star_wars.png"
             alt="Image"
             fill

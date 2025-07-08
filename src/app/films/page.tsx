@@ -48,7 +48,7 @@ export default function Films() {
             priority
           />
 
-          <div className="absolute inset-0 bg-gradient-to-t  from-black/100 to-black/55"></div>
+          <div className="absolute inset-0 bg-gradient-to-t  sm:from-black/100 sm:to-black/65 xs:from-black/100 xs:to-black/60"></div>
           <Header></Header>
           <div className="text-white sm:text-[3rem] xs:text-[2rem] font-bold z-10">
             Films & TV Shows

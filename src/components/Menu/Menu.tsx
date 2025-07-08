@@ -1,6 +1,5 @@
 "use client";
 
-import "../../styles/Menu.css";
 import Header from "./Header/Header";
 import Seacrh from "./Search/Search";
 import { useEffect } from "react";
@@ -30,7 +29,7 @@ export default function Menu() {
           fill
           className=" object-center object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t  from-black/80 to-black/85"></div>
+        <div className="absolute inset-0 bg-gradient-to-t  sm:from-black/80 sm:to-black/85 xs:from-black/80 xs:to-black/65"></div>
         <Header></Header>
       </div>
 

@@ -34,7 +34,7 @@ export default function Planets() {
             fill
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t  from-black/65 to-black/45"></div>
+          <div className="absolute inset-0 bg-gradient-to-t  from-black/65 to-black/65"></div>
           <div className="text-white text-[3rem] font-bold z-10">Planets</div>
           <Header></Header>
         </div>

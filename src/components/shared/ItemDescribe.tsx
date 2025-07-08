@@ -91,19 +91,19 @@ export default function ItemDescribe({
                 className="flex flex-col font-medium text-[1.3rem] 
               "
               >
-                <div className="p-[2%] flex flex-row gap-[20%] border-t-white border-b-white border-[3px] border-[#1C2126] sm:w-[80%] xs:w-[100%]">
+                <div className="p-[2%] flex flex-row gap-[25%] border-t-white border-b-white border-[3px] border-[#1C2126] sm:w-[80%] xs:w-[100%]">
                   <div className="w-[5%]  text-[#A1ABB5] ">Name</div>
                   <div>{selectedItem.name}</div>
                 </div>
-                <div className="p-[2%] flex flex-row  gap-[20%]  border-b-white border-[3px] border-[#1C2126] sm:w-[80%] xs:w-[100%]">
+                <div className="p-[2%] flex flex-row  gap-[25%]  border-b-white border-[3px] border-[#1C2126] sm:w-[80%] xs:w-[100%]">
                   <div className="w-[5%] text-[#A1ABB5]">Gender</div>
                   <div className="w-[80%] ">{selectedItem.gender}</div>
                 </div>
-                <div className="p-[2%] flex flex-row  gap-[20%] border-b-white border-[3px] border-[#1C2126] sm:w-[80%] xs:w-[100%] ">
+                <div className="p-[2%] flex flex-row  gap-[25%] border-b-white border-[3px] border-[#1C2126] sm:w-[80%] xs:w-[100%] ">
                   <div className="w-[5%]  text-[#A1ABB5]">Heigth</div>
                   <div>{selectedItem.height}</div>
                 </div>
-                <div className="p-[2%] flex flex-row  gap-[20%] border-b-white border-[3px] border-[#1C2126] sm:w-[80%] xs:w-[100%]  ">
+                <div className="p-[2%] flex flex-row  gap-[25%] border-b-white border-[3px] border-[#1C2126] sm:w-[80%] xs:w-[100%]  ">
                   <div className="w-[5%]  text-[#A1ABB5]">Born</div>
                   <div>{selectedItem.born}</div>
                 </div>
