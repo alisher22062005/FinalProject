@@ -61,7 +61,6 @@ export default function ItemDescribe({
               alt="Image"
               className="object-cover rounded-[1rem] object-top"
               fill
-              priority
             />
           </div>
         </div>
