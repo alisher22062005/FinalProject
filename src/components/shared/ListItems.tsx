@@ -7,7 +7,10 @@ import { useEffect, useState } from "react";
 import { Button } from "@mui/material";
 import Image from "next/image";
 import { PlanetType } from "@/toolkit/slices/Planet";
-
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "@/toolkit/store";
+import { fetchCharacters } from "@/toolkit/slices/Character";
+import { fetchPlanets } from "@/toolkit/slices/Planet";
 export default function ListItems({
   findItem,
   match,
@@ -21,6 +24,16 @@ export default function ListItems({
 }) {
   const [currentArray, setCurrentArray] =
     useState<(CharacterType | PlanetType)[]>();
+
+  const statusCharacter = useSelector(
+    (state: RootState) => state.characters.status
+  );
+  const statusPlanets = useSelector((state: RootState) => state.planets.status);
+  const dispatch = useDispatch<AppDispatch>();
+  useEffect(() => {
+    if (statusCharacter == "idle") dispatch(fetchCharacters());
+    if (statusPlanets == "idle") dispatch(fetchPlanets());
+  }, []);
 
   const characters = useSelector(
     (state: RootState) => state.characters.characters

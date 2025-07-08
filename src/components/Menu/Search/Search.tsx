@@ -90,7 +90,7 @@ export default function Seacrh({ image }: { image?: string }) {
           } bg-black mt-[35%]`}
         />
         {!notFound && (
-          <div className="text-[#ba000d] sm:text-[1.2rem] flex justify-end sm:w-[30%] xs:w-[50%] fixed sm:mt-[42%] xs:mt-[53%] xs:text-[1rem] font-bold">
+          <div className="text-[#ba000d] sm:text-[1.2rem] flex justify-end sm:w-[30%] xs:w-[50%] fixed z-10 sm:mt-[42%] xs:mt-[53%] xs:text-[1rem] font-bold">
             Not Found
           </div>
         )}
