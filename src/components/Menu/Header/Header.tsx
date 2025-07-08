@@ -6,22 +6,26 @@ import Image from "next/image";
 export default function Header() {
   const router = useRouter();
 
-  const [currenButton, setCurrentButton] = useState("");
+  const [currentButton, setCurrentButton] = useState("");
 
   useEffect(() => {
-    if (currenButton) localStorage.setItem("currentButton", currenButton);
-  }, [currenButton]);
+    if (currentButton) localStorage.setItem("currentButton", currentButton);
+  }, [currentButton]);
 
   useEffect(() => {
     const b = localStorage.getItem("currentButton");
     if (b) {
       setCurrentButton(b);
-      b == "Characters" ? router.push("/") : router.push(`/${b.toLowerCase()}`);
+      if (b === "Characters") {
+        router.push("/");
+      } else {
+        router.push(`/${b.toLowerCase()}`);
+      }
     } else {
       setCurrentButton("Characters");
       router.push("/");
     }
-  }, []);
+  }, [router]);
 
   function handleClickAbout() {
     setCurrentButton("About");
@@ -61,7 +65,7 @@ export default function Header() {
         <div>
           <button
             className={`${
-              currenButton == "About" ? "text-[yellow]" : "text-white"
+              currentButton == "About" ? "text-[yellow]" : "text-white"
             }`}
             onClick={handleClickAbout}
           >
@@ -71,7 +75,7 @@ export default function Header() {
         <div>
           <button
             className={`${
-              currenButton == "Films" ? "text-[yellow]" : "text-white"
+              currentButton == "Films" ? "text-[yellow]" : "text-white"
             }`}
             onClick={handleClickFillms}
           >
@@ -81,7 +85,7 @@ export default function Header() {
         <div>
           <button
             className={`${
-              currenButton == "Planets" ? "text-[yellow]" : "text-white"
+              currentButton == "Planets" ? "text-[yellow]" : "text-white"
             }`}
             onClick={handleClickPlanets}
           >
@@ -91,7 +95,7 @@ export default function Header() {
         <div>
           <button
             className={`${
-              currenButton == "Characters" ? "text-[yellow]" : "text-white"
+              currentButton == "Characters" ? "text-[yellow]" : "text-white"
             }`}
             onClick={handleClickCharacters}
           >
