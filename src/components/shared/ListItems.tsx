@@ -111,7 +111,7 @@ export default function ListItems({
               {" "}
               <Image
                 alt="Image"
-                className={` rounded-[1rem]  object-center object-cover ${
+                className={` rounded-[1rem]  object-top object-cover ${
                   image
                     ? "sm:w-[300px] xs:w-[250px]"
                     : "sm:max-w-[100%] xs:w-[80%]"
@@ -131,7 +131,7 @@ export default function ListItems({
       )}
 
       {!findItem && !image && (
-        <div className="flex   sm:justify-end mr-[5%] pb-[5%] xs:w-[100%] xs:justify-center">
+        <div className="flex   sm:justify-center mr-[5%] pb-[5%] xs:w-[100%] xs:justify-center">
           {" "}
           <Pagination
             onChange={(e, value) => handleClick(value)}

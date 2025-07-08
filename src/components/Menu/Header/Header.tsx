@@ -16,7 +16,10 @@ export default function Header() {
   useEffect(() => {
     const b = localStorage.getItem("currentButton");
     if (b) setCurrentButton(b);
-    else setCurrentButton("Characters");
+    else {
+      setCurrentButton("Characters");
+      router.push("/characters");
+    }
   }, []);
 
   function handleClickAbout() {
