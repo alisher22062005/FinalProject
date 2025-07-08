@@ -1,6 +1,6 @@
 "use client";
 import Header from "@/components/Menu/Header/Header";
-
+import Image from "next/image";
 import SmoothWrapper from "@/components/Menu/SmoothScroll/SmoothScroll";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -22,17 +22,16 @@ export default function About() {
   return (
     <>
       <SmoothWrapper>
-        {" "}
-        <div
-          style={{
-            backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0.6), rgba(0,0,0,1)), url('/assets/star_wars_about.webp')`,
-          }}
-          className=" h-[70vh] w-[100%] bg-center bg-cover overflow:hidden animate-my-float flex items-center justify-center "
-        >
-          {/* <Header></Header> */}
-
+        <div className="h-[70vh] w-[100%] bg-center bg-cover overflow:hidden animate-my-float flex items-center justify-center ">
+          <Image
+            src="/assets/star_wars_about.webp"
+            alt="Image"
+            className="object-cover object-center"
+            fill
+          />
+          <div className="absolute inset-0 bg-gradient-to-t  from-black/100 to-black/75"></div>
           <Header></Header>
-          <div className="text-white sm:text-[3rem] xs:text-[2rem] font-bold">
+          <div className="text-white sm:text-[3rem] xs:text-[2rem] font-bold z-10">
             What is Star Wars?
           </div>
         </div>

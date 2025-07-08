@@ -39,6 +39,7 @@ export default function Item({
               fill
               src={item.image?.trim() ? item.image : "/assets/no_image.webp"}
               alt={item.name || item.title}
+              priority
             />
           </div>
         </figure>

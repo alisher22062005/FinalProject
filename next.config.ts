@@ -2,7 +2,13 @@ import { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ["vignette.wikia.nocookie.net"], // 👈 Add the domain here
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "vignette.wikia.nocookie.net",
+        pathname: "/**",
+      },
+    ],
   },
 };
 

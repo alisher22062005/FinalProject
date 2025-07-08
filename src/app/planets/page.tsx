@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import Search from "../../components/Menu/Search/Search";
 import SmoothWrapper from "@/components/Menu/SmoothScroll/SmoothScroll";
-
+import Image from "next/image";
 export default function Planets() {
   const image = "assets/search_planets.jpg";
   const [loading, setLoading] = useState(true);
@@ -26,13 +26,16 @@ export default function Planets() {
     <>
       <SmoothWrapper>
         {" "}
-        <div
-          className=" h-[70vh]  w-full bg-cover bg-center animate-my-float flex items-center justify-center "
-          style={{
-            backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.5), rgba(0,0,0,1)), url('/assets/planets.jpg')`,
-          }}
-        >
-          <div className="text-white text-[3rem] font-bold">Planets</div>
+        <div className=" relative h-[70vh]  w-full bg-cover bg-center animate-my-float flex items-center justify-center">
+          <Image
+            className="object-cover object-center"
+            src="/assets/planets.jpg"
+            alt="Image"
+            fill
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-t  from-black/65 to-black/45"></div>
+          <div className="text-white text-[3rem] font-bold z-10">Planets</div>
           <Header></Header>
         </div>
         <Search image={image}></Search>

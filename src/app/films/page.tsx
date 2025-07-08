@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { fetchFilms } from "@/toolkit/slices/Film";
 import { useSelector } from "react-redux";
 import { RootState } from "@/toolkit/store";
+import Image from "next/image";
 import Header from "@/components/Menu/Header/Header";
 import Item from "@/components/shared/Item";
 import SmoothWrapper from "@/components/Menu/SmoothScroll/SmoothScroll";
@@ -38,14 +39,18 @@ export default function Films() {
   return (
     <>
       <SmoothWrapper>
-        <div
-          style={{
-            backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0.6), rgba(0,0,0,1)), url('/assets/star_wars_films.jpg')`,
-          }}
-          className="h-[70vh] bg-cover bg-center overflow:hidden animate-my-float flex justify-center items-center"
-        >
+        <div className="relative h-[70vh] bg-cover bg-center overflow:hidden animate-my-float flex justify-center items-center">
+          <Image
+            src="/assets/star_wars_films.jpg"
+            alt="Image"
+            fill
+            className="object-cover object-center "
+            priority
+          />
+
+          <div className="absolute inset-0 bg-gradient-to-t  from-black/100 to-black/55"></div>
           <Header></Header>
-          <div className="text-white sm:text-[3rem] xs:text-[2rem] font-bold">
+          <div className="text-white sm:text-[3rem] xs:text-[2rem] font-bold z-10">
             Films & TV Shows
           </div>
         </div>

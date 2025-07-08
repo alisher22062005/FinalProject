@@ -118,6 +118,7 @@ export default function ListItems({
                 }`}
                 src={match[0].image || "/assets/no_image.webp"}
                 fill
+                priority
               />
             </div>
           </div>

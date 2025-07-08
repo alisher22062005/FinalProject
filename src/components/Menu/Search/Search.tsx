@@ -8,6 +8,7 @@ import { RootState } from "@/toolkit/store";
 import { CharacterType, fetchCharacters } from "@/toolkit/slices/Character";
 import { fetchPlanets, PlanetType } from "@/toolkit/slices/Planet";
 import ListItems from "@/components/shared/ListItems";
+import Image from "next/image";
 
 export default function Seacrh({ image }: { image?: string }) {
   const [input, setInput] = useState("");
@@ -28,7 +29,9 @@ export default function Seacrh({ image }: { image?: string }) {
     }
   }, [dispatch, image]);
 
-  const source = image ?? "assets/search.jpg";
+  const source: string = image?.startsWith("http")
+    ? image
+    : "/assets/search.jpg";
 
   const characters = useSelector(
     (state: RootState) => state.characters.characters
@@ -66,12 +69,9 @@ export default function Seacrh({ image }: { image?: string }) {
 
   return (
     <>
-      <div
-        style={{
-          backgroundImage: `linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0.5), rgba(0,0,0,0.9)),url("${source}") `,
-        }}
-        className="h-screen flex  items-center justify-center overflow:hidden bg-center bg-cover sm: mt-[10%] xs:mt-[5%]  bg-white "
-      >
+      <div className=" relative h-screen flex  items-center justify-center overflow:hidden bg-center bg-cover sm: mt-[10%] xs:mt-[5%]  bg-white">
+        <Image src={source} alt="Image" fill priority />
+        <div className="absolute inset-0 bg-gradient-to-b  from-black/85 to-black/15"></div>
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}

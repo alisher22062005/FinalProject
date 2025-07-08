@@ -45,7 +45,7 @@ export default function Header() {
         <div className=" relative h-[100px] w-[150px] ">
           {" "}
           <Image
-            className="xs:object-cover xs:object-center  img-color"
+            className="relative xs:object-cover xs:object-center overflow:hidden  img-color "
             src="/assets/star_wars.png"
             alt="Image"
             fill
