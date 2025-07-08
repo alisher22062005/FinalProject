@@ -30,11 +30,6 @@ export default function ListItems({
   );
   const statusPlanets = useSelector((state: RootState) => state.planets.status);
   const dispatch = useDispatch<AppDispatch>();
-  useEffect(() => {
-    if (statusCharacter == "idle") dispatch(fetchCharacters());
-    if (statusPlanets == "idle") dispatch(fetchPlanets());
-  }, []);
-
   const characters = useSelector(
     (state: RootState) => state.characters.characters
   );
@@ -42,7 +37,13 @@ export default function ListItems({
   const data = image ? planets : characters;
 
   useEffect(() => {
-    setCurrentArray(data.filter((item, index) => index < 6));
+    if (statusCharacter == "idle") dispatch(fetchCharacters());
+    if (statusPlanets == "idle") dispatch(fetchPlanets());
+  }, [dispatch, statusCharacter, statusPlanets]);
+
+  useEffect(() => {
+    if (data.length > 0)
+      setCurrentArray(data.filter((item, index) => index < 6));
   }, [data]);
 
   const handleClick = (value: number) => {
