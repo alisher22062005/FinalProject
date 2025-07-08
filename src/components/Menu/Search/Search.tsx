@@ -69,8 +69,14 @@ export default function Seacrh({ image }: { image?: string }) {
 
   return (
     <>
-      <div className=" relative h-screen flex  items-center justify-center overflow:hidden bg-center bg-cover sm: mt-[10%] xs:mt-[5%]  bg-white">
-        <Image src={source} alt="Image" fill priority />
+      <div className=" relative h-[100dvh] flex  items-center justify-center overflow:hidden bg-center bg-cover sm: mt-[10%] xs:mt-[5%]  bg-white">
+        <Image
+          src={source}
+          alt="Image"
+          fill
+          priority
+          className="object-cover object-center"
+        />
         <div className="absolute inset-0 bg-gradient-to-b  from-black/85 to-black/15"></div>
         <input
           value={input}
