@@ -90,7 +90,10 @@ export default function Seacrh({ image }: { image?: string }) {
           } bg-black mt-[35%]`}
         />
         {!notFound && (
-          <div className="text-[#ba000d] sm:text-[1.2rem] flex justify-end sm:w-[30%] xs:w-[50%] fixed z-10 sm:mt-[42%] xs:mt-[53%] xs:text-[1rem] font-bold">
+          // <div className="text-[#ba000d] sm:text-[1.2rem] flex justify-end sm:w-[30%] xs:w-[50%] fixed z-10 sm:mt-[42%] xs:mt-[53%] xs:text-[1rem] font-bold">
+          //   Not Found
+          // </div>
+          <div className="z-20 absolute xs:mt-[53%] xs:text-[1rem] sm:text-[1.2rem] xs:ml-[30%] sm:mt-[43%] sm:mr-[6%] text-red-600 text-center sm:w-[30%] xs:w-[55%] font-bold">
             Not Found
           </div>
         )}
