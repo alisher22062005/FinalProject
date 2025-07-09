@@ -5,8 +5,24 @@ import Seacrh from "./Search/Search";
 import { useEffect } from "react";
 import { useState } from "react";
 import Image from "next/image";
+import { AppDispatch, RootState } from "@/toolkit/store";
+import { fetchPlanets } from "@/toolkit/slices/Planet";
+import { fetchCharacters } from "@/toolkit/slices/Character";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+
 export default function Menu() {
   const [loading, setLoading] = useState(true);
+  const statusPlanets = useSelector((state: RootState) => state.planets.status);
+  const statusCharacter = useSelector(
+    (state: RootState) => state.characters.status
+  );
+  const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    if (statusCharacter == "idle") dispatch(fetchCharacters());
+    if (statusPlanets == "idle") dispatch(fetchPlanets());
+  }, [dispatch, statusPlanets, statusCharacter]);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 200); // simulate delay

@@ -47,6 +47,7 @@ export default function ListItems({
   }, [data]);
 
   console.log("CUrrent array: ", currentArray);
+  console.log("Data: ", data);
 
   const handleClick = (value: number) => {
     console.log(value);
